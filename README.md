@@ -74,9 +74,10 @@ You can also manually start and stop it with `sudo novpn_ns_up.sh` and `sudo nov
 
 ### novpn_ns_configure_default.sh
 
-Configures the default network namespace settings.
+Configures the default network namespace settings.https://github.com/USSURATONCACHI/novpn
 
-### novpn_ns_up.sh / novpn_ns_down.sh (Already managed by systemd, you generally dont wanna use it)
+### novpn_ns_up.sh, novpn_ns_down.sh
+(Already managed by systemd, you generally dont wanna use it)
 
 Scripts to **manually** set up and tear down the network namespace and associated rules.
 
@@ -90,11 +91,3 @@ Scripts to **manually** set up and tear down the network namespace and associate
 - `gawk`
 - `coreutils`
 - `systemd`
-
-## License
-
-This project is licensed under the Apache License, Version 2.0. See the [LICENSE](LICENSE) file for more details.
-
-## Author
-
-Daniil Redchin
