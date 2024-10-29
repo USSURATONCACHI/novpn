@@ -14,7 +14,7 @@ Download package from releases page, or
 
 clone the repository, build and install the package:
    ```bash
-   git clone <repository-url>
+   git clone [<repository-url>](https://github.com/USSURATONCACHI/novpn)
    cd novpn
    makepkg -si
    ```
