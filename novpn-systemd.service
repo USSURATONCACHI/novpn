@@ -1,0 +1,12 @@
+[Unit]
+Description=CLI tool to easily run programs on a specific network device.
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/bin/novpn_ns_up.sh
+ExecStop=/bin/novpn_ns_down.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
