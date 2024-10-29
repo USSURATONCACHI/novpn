@@ -10,7 +10,8 @@ license=('Apache-2.0')
 # Every single one is used and is essential
 depends=('bash' 'firejail' 'iproute2' 'iptables' 'grep' 'gawk' 'coreutils' 'systemd')
 makedepends=('coreutils')
-optdepends=()
+
+install=novpn.install
 
 source=(
     novpn
@@ -36,7 +37,6 @@ sha256sums=('b4034bd1653fda09aa82e8c65487d89afb4e345f864f51fdf6e1145dfca8b8af'
             'e7c20baf88e074c14c1c39f7c7a5ce3ebd12e6af02026a8f794171421aa7bd40'
             '9414e6063d1ad702241eb914304641308e6b38eca73a31e4212bc9ece48bf367')
 
-install=novpn.install
 
 
 package() {
