@@ -2,11 +2,22 @@
 
 **novpn** is a command-line tool designed to route traffic through a specific network device using Linux network namespaces. It provides a simple way to manage network isolation for applications and services.
 
+## Quick start
+
+```bash
+
+# Assuming you have VPN (like wireguard) enabled
+$ curl api.ipify.org
+1.2.3.4  <-- your vpn IP
+$ novpn curl api.ipify.org
+4.3.2.1  <-- your true home IP
+
+```
+
 ## Features
 
-- Easy setup of network namespaces.
 - Control traffic routing via specified network devices.
-- Automatic network setup on boot with systemd (unit novpn).
+- Automatic setup of network namespaces.
 
 ## Installation
 
