@@ -8,9 +8,9 @@
 
 # Assuming you have VPN (like wireguard) enabled
 $ curl api.ipify.org
-1.2.3.4  <-- your vpn IP
+1.2.3.4  # <-- your vpn IP
 $ novpn curl api.ipify.org
-4.3.2.1  <-- your true home IP
+4.3.2.1  # <-- your true home IP
 
 ```
 
