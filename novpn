@@ -4,5 +4,5 @@ if [ -z "$1" ]; then
     exit 1
 fi
 
-source novpn_ns_params.sh
+source novpn_ns params
 firejail --noprofile --netns=${NS} "$@"
