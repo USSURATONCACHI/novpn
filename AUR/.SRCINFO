@@ -15,7 +15,7 @@ pkgbase = novpn
 	depends = gawk
 	depends = coreutils
 	depends = systemd
-	source = https://github.com/USSURATONCACHI/novpn/archive/refs/tags/v1.2.0-pre.tar.gz
-	sha256sums = d3c6d2075378cdabe7829ad710c551eafdc24636f9f98548b5dfcff8656f9269
+	source = https://github.com/USSURATONCACHI/novpn/archive/refs/tags/v1.2.0.tar.gz
+	sha256sums = 5d053f2ee2f8e0269ee3f61520b10da8ac53d601ac9bd06110babde45f5fa88b
 
 pkgname = novpn
