@@ -1,7 +1,10 @@
 #!/bin/bash
 
-source novpn_ns_params.sh -f
-novpn_ns_print_params.sh
+source novpn_ns params -f
+novpn_ns print_params
+
+echo "Enabling IP forwarding"
+sysctl -w net.ipv4.ip_forward=1
 
 echo "Adding network namespace"
 ip netns add $NS

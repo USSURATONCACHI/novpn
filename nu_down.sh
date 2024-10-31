@@ -1,11 +1,11 @@
 #!/bin/bash
 
-source novpn_ns_params.sh
+source novpn_ns params
 echo
 echo "-------"
 echo
 
-novpn_ns_print_params.sh
+novpn_ns print_params
 
 ip rule del from $SUBNET lookup 100
 ip route del default table 100

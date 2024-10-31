@@ -1,11 +1,14 @@
 [Unit]
+Name=novpn
 Description=CLI tool to easily run programs on a specific network device.
-After=network.target
+After=network-online.target
+Wants=network-online.target
+ExecStartPre=/usr/bin/novpn_ns wait_for_device
 
 [Service]
 Type=oneshot
-ExecStart=/bin/novpn_ns_up.sh
-ExecStop=/bin/novpn_ns_down.sh
+ExecStart=/usr/bin/novpn_ns_up.sh
+ExecStop=/usr/bin/novpn_ns_down.sh
 RemainAfterExit=yes
 
 [Install]

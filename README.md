@@ -4,6 +4,10 @@
 
 ## Quick start
 
+This tool was initially created to launch Steam without wireguard vpn to reduce ping in games, while other programs will still run with VPN. 
+
+However `novpn` is not limited by steam, or wireguard. You can use it to launch any programs on any network devices.
+
 ```bash
 
 # Assuming you have VPN (like wireguard) enabled
@@ -21,14 +25,41 @@ $ novpn curl api.ipify.org
 
 ## Installation
 
-Download package from releases page, or
+### Via AUR
+```
+$ yay -S novpn
+```
 
+### Manually
+Download package from releases page
+
+### Package it yourself
 clone the repository, build and install the package:
    ```bash
    git clone https://github.com/USSURATONCACHI/novpn
    cd novpn
    makepkg -si
    ```
+
+## Usage
+
+To use the tool, invoke the `novpn` command followed by the desired command you want to run within the specified namespace:
+
+```bash
+$ novpn <command>
+```
+
+### Additional usage options
+Create default configuration for `novpn`:
+```bash
+$ sudo novpn_ns configure_default
+```
+
+### Example
+
+```bash
+$ novpn curl api.ipify.org
+```
 
 ## Configuration
 
@@ -51,34 +82,10 @@ NS      novpn_ns
 SUBNET  192.168.80.0/30
 ```
 
-## Usage
-
-To use the tool, invoke the `novpn` command followed by the desired command you want to run within the specified namespace:
-
-```bash
-$ novpn <command>
-```
-
-### Example
-
-```bash
-$ novpn curl api.ipify.org
-```
-
 ## Service Management
 
 By default, systemd is used to manage network state (`systemctl enable/start/stop/disable novpn`).
-You can also manually start and stop it with `sudo novpn_ns_up.sh` and `sudo novpn_ns_down.sh` 
-
-## Scripts
-
-### novpn_ns_configure_default.sh
-
-Configures the default network namespace settings.
-
-### novpn_ns_up.sh / novpn_ns_down.sh (Already managed by systemd, you generally dont wanna use it)
-
-Scripts to **manually** set up and tear down the network namespace and associated rules.
+You can also manually start and stop it with `sudo novpn_ns up` and `sudo novpn_ns down` 
 
 ## Dependencies
 
@@ -94,7 +101,3 @@ Scripts to **manually** set up and tear down the network namespace and associate
 ## License
 
 This project is licensed under the Apache License, Version 2.0. See the [LICENSE](LICENSE) file for more details.
-
-## Author
-
-Daniil Redchin
