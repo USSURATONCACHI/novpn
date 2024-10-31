@@ -1,3 +1,7 @@
+Version 1.2.0
+- Decoupled AUR files from code.
+- Made PKGBUILD download code from git, instead of local files.
+
 Version 1.1.0
 - Made novpn enable IP forwarding on start.
 - Made novpn wait for other device before start
