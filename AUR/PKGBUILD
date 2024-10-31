@@ -14,13 +14,25 @@ makedepends=('coreutils')
 install=novpn.install
 
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('d3c6d2075378cdabe7829ad710c551eafdc24636f9f98548b5dfcff8656f9269')
+
 
 package() {
-    cd "${srcdir}/novpn-${pkgver}/src"
+    novpn_srcdir="${srcdir}/novpn-${pkgver}/novpn_src"
     
-    install -Dm755 usr/bin/novpn_utils/*     "${pkgdir}/usr/bin/novpn_utils"
-    install -Dm755 usr/bin/*                 "${pkgdir}/usr/bin/"
-    install -Dm755 usr/lib/systemd/system/*  "${pkgdir}/usr/lib/systemd/system/"
-    install -Dm644 etc/*                     "${pkgdir}/etc/"
+    install -Dm755 "${novpn_srcdir}/usr/bin/novpn_utils/configure_default" "${pkgdir}/usr/bin/novpn_utils/configure_default"
+    install -Dm755 "${novpn_srcdir}/usr/bin/novpn_utils/down"              "${pkgdir}/usr/bin/novpn_utils/down"
+    install -Dm755 "${novpn_srcdir}/usr/bin/novpn_utils/get_gateway"       "${pkgdir}/usr/bin/novpn_utils/get_gateway"
+    install -Dm755 "${novpn_srcdir}/usr/bin/novpn_utils/ip_offset"         "${pkgdir}/usr/bin/novpn_utils/ip_offset"
+    install -Dm755 "${novpn_srcdir}/usr/bin/novpn_utils/params"            "${pkgdir}/usr/bin/novpn_utils/params"
+    install -Dm755 "${novpn_srcdir}/usr/bin/novpn_utils/print_params"      "${pkgdir}/usr/bin/novpn_utils/print_params"
+    install -Dm755 "${novpn_srcdir}/usr/bin/novpn_utils/up"                "${pkgdir}/usr/bin/novpn_utils/up"
+    install -Dm755 "${novpn_srcdir}/usr/bin/novpn_utils/wait_for_device"   "${pkgdir}/usr/bin/novpn_utils/wait_for_device"
+
+    install -Dm755 "${novpn_srcdir}/usr/bin/novpn"    "${pkgdir}/usr/bin/novpn"
+    install -Dm755 "${novpn_srcdir}/usr/bin/novpn_ns" "${pkgdir}/usr/bin/novpn_ns"
+
+    install -Dm755 "${novpn_srcdir}/usr/lib/systemd/system/novpn.service"  "${pkgdir}/usr/lib/systemd/system/novpn.service"
+
+    install -Dm644 "${novpn_srcdir}/etc/novpn" "${pkgdir}/etc/novpn"
 }
