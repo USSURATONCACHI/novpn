@@ -1,0 +1,26 @@
+# Maintainer: Daniil Redchin <redchindaniil@gmail.com> <github.com/USSURATONCACHI>
+pkgname=novpn
+pkgver=1.2.0
+pkgrel=1
+pkgdesc="CLI tool to easily run programs with access to only one network device"
+arch=('any')
+url="https://github.com/USSURATONCACHI/novpn"
+license=('Apache-2.0')
+
+# Every single one is used and is essential
+depends=('bash' 'firejail' 'iproute2' 'iptables' 'grep' 'gawk' 'coreutils' 'systemd')
+makedepends=('coreutils')
+
+install=novpn.install
+
+source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('SKIP')
+
+package() {
+    cd "${srcdir}/novpn-${pkgver}/src"
+    
+    install -Dm755 usr/bin/novpn_utils/*     "${pkgdir}/usr/bin/novpn_utils"
+    install -Dm755 usr/bin/*                 "${pkgdir}/usr/bin/"
+    install -Dm755 usr/lib/systemd/system/*  "${pkgdir}/usr/lib/systemd/system/"
+    install -Dm644 etc/*                     "${pkgdir}/etc/"
+}
