@@ -97,7 +97,3 @@ You can also manually start and stop it with `sudo novpn_ns up` and `sudo novpn_
 - `gawk`
 - `coreutils`
 - `systemd`
-
-## License
-
-This project is licensed under the Apache License, Version 2.0. See the [LICENSE](LICENSE) file for more details.
