@@ -13,12 +13,12 @@ makedepends=('coreutils')
 
 install=novpn.install
 
-source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('5d053f2ee2f8e0269ee3f61520b10da8ac53d601ac9bd06110babde45f5fa88b')
+source=("${url}/archive/refs/tags/v${pkgver}-pre.tar.gz")
+sha256sums=('4efd794e330edccc3d817cfc0d014d6a13146f38439c894e703b9ea341a880d8')
 
 
 package() {
-    novpn_srcdir="${srcdir}/novpn-${pkgver}/novpn_src"
+    novpn_srcdir="${srcdir}/novpn-${pkgver}-pre/novpn_src"
     
     install -Dm755 "${novpn_srcdir}/usr/bin/novpn_utils/configure_default"  "${pkgdir}/usr/bin/novpn_utils/configure_default"
     install -Dm755 "${novpn_srcdir}/usr/bin/novpn_utils/down"               "${pkgdir}/usr/bin/novpn_utils/down"
