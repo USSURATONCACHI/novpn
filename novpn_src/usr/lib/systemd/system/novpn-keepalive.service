@@ -1,0 +1,6 @@
+[Unit]
+Description=Update novpn_ns rules every minute while novpn.service is active
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/novpn_ns internal_add_rules
