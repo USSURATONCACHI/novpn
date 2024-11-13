@@ -1,6 +1,6 @@
 # Maintainer: Daniil Redchin <redchindaniil@gmail.com> <github.com/USSURATONCACHI>
 pkgname=novpn
-pkgver=1.3.0-pre1
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="CLI tool to easily run programs with access to only one network device"
 arch=('any')
@@ -34,6 +34,7 @@ package() {
     install -Dm755 "${novpn_srcdir}/usr/bin/novpn_ns" "${pkgdir}/usr/bin/novpn_ns"
 
     install -Dm755 "${novpn_srcdir}/usr/lib/systemd/system/novpn.service"  "${pkgdir}/usr/lib/systemd/system/novpn.service"
+    install -Dm755 "${novpn_srcdir}/usr/lib/systemd/system/novpn_keepalive.timer"  "${pkgdir}/usr/lib/systemd/system/novpn_keepalive.timer"
 
     install -Dm644 "${novpn_srcdir}/etc/novpn" "${pkgdir}/etc/novpn"
 }
