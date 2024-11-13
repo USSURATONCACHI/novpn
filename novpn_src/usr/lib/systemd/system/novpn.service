@@ -10,8 +10,7 @@ ExecStartPre=/usr/bin/novpn_ns wait_for_device
 ExecStart=/usr/bin/novpn_ns up
 ExecStartPost=/usr/bin/systemctl start novpn_keepalive.timer
 
-ExecStopPre=/usr/bin/systemctl stop novpn_keepalive.timer
-ExecStop=/usr/bin/novpn_ns down
+ExecStop=/bin/bash -c "/usr/bin/systemctl stop novpn_keepalive.timer && /usr/bin/novpn_ns down"
 RemainAfterExit=yes
 
 [Install]
