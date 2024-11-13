@@ -14,7 +14,7 @@ makedepends=('coreutils')
 install=novpn.install
 
 source=("${url}/archive/refs/tags/v${pkgver}-pre.tar.gz")
-sha256sums=('5a5f1a6bc2664c42a7c28c3b9696334ea2d1c0b7e9314fcaaa620471a3f06ad9')
+sha256sums=('afbf5f8e8790224852f11445bde165293dc1473084a4e555b22b561a1f5e75a6')
 
 
 package() {
