@@ -14,7 +14,7 @@ makedepends=('coreutils')
 install=novpn.install
 
 source=("${url}/archive/refs/tags/v${pkgver}-pre.tar.gz")
-sha256sums=('f629220f40e822a0ed9cec799d6d74bc136117ca4073c05f0301fd24bd206d02')
+sha256sums=('5a5f1a6bc2664c42a7c28c3b9696334ea2d1c0b7e9314fcaaa620471a3f06ad9')
 
 
 package() {
@@ -33,10 +33,10 @@ package() {
     install -Dm755 "${novpn_srcdir}/usr/bin/novpn"    "${pkgdir}/usr/bin/novpn"
     install -Dm755 "${novpn_srcdir}/usr/bin/novpn_ns" "${pkgdir}/usr/bin/novpn_ns"
 
-    install -Dm755 "${novpn_srcdir}/usr/lib/systemd/system/novpn.service"  "${pkgdir}/usr/lib/systemd/system/novpn.service"
+    install -Dm644 "${novpn_srcdir}/usr/lib/systemd/system/novpn.service"  "${pkgdir}/usr/lib/systemd/system/novpn.service"
 
-    install -Dm755 "${novpn_srcdir}/usr/lib/systemd/system/novpn-keepalive.service" "${pkgdir}/usr/lib/systemd/system/novpn-keepalive.service"
-    install -Dm755 "${novpn_srcdir}/usr/lib/systemd/system/novpn-keepalive.timer"   "${pkgdir}/usr/lib/systemd/system/novpn-keepalive.timer"
+    install -Dm644 "${novpn_srcdir}/usr/lib/systemd/system/novpn-keepalive.service" "${pkgdir}/usr/lib/systemd/system/novpn-keepalive.service"
+    install -Dm644 "${novpn_srcdir}/usr/lib/systemd/system/novpn-keepalive.timer"   "${pkgdir}/usr/lib/systemd/system/novpn-keepalive.timer"
 
     install -Dm644 "${novpn_srcdir}/etc/novpn" "${pkgdir}/etc/novpn"
 }
