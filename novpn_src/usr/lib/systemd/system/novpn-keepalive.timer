@@ -3,5 +3,6 @@ Description=Update novpn_ns rules every minute while novpn.service is active
 BindsTo=novpn.service
 
 [Timer]
-OnUnitActiveSec=1min
+OnActiveSec=1min
 Persistent=false
+Unit=novpn-keepalive.service
