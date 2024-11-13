@@ -7,14 +7,34 @@ echo
 
 novpn_ns print_params
 
-ip rule del from $SUBNET lookup 100
+echo "Deleting ip rule..."
+while ip rule show | grep -q "from $SUBNET"; do
+        ip rule del from $SUBNET lookup 100
+done
+
+
+echo "Deleting ip routes..."
 ip route del default table 100
 ip route del $SUBNET dev ${NS}_veth0 table 100
 
-iptables -D FORWARD -s $SUBNET -j ACCEPT
-iptables -D FORWARD -d $SUBNET -j ACCEPT
-iptables -t nat -D POSTROUTING -j MASQUERADE -s $SUBNET
 
+echo "Deleting iptables FORWARD rules..."
+while iptables -C FORWARD -s $SUBNET -j ACCEPT 2>/dev/null; do
+        iptables -D FORWARD -s $SUBNET -j ACCEPT
+done
+
+echo "Second one..."
+while iptables -C FORWARD -d $SUBNET -j ACCEPT 2>/dev/null; do
+        iptables -D FORWARD -d $SUBNET -j ACCEPT
+done
+
+
+echo "Deleting iptables POSTROUTING rules..."
+while iptables -t nat -C POSTROUTING -j MASQUERADE -s $SUBNET 2>/dev/null; do
+        iptables -t nat -D POSTROUTING -j MASQUERADE -s $SUBNET
+done
+
+echo "Deleting ip link and network namespace..."
 ip link del ${NS}_veth0
 ip netns del $NS
 rm -f /run/novpn
