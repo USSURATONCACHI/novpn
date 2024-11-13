@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source novpn_ns params
+
 echo "Adding routes"
 ip netns exec ${NS} ip route add default via $VETH0_ADDR dev ${NS}_veth1
 
