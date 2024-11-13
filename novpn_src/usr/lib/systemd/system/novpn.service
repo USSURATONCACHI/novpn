@@ -5,8 +5,12 @@ Wants=network-online.target
 
 [Service]
 Type=oneshot
+
 ExecStartPre=/usr/bin/novpn_ns wait_for_device
 ExecStart=/usr/bin/novpn_ns up
+ExecStartPost=/usr/bin/systemctl start novpn_keepalive.timer
+
+ExecStopPre=/usr/bin/systemctl stop novpn_keepalive.timer
 ExecStop=/usr/bin/novpn_ns down
 RemainAfterExit=yes
 
