@@ -6,10 +6,10 @@ if [ !  -e /run/novpn ]; then
         echo "/run/novpn does not exist."
         if [ ! -e /etc/novpn ]; then
             echo "/etc/novpn does not exist."
-            novpn_ns_configure_default
+            novpn_ns configure_default
         fi
         cp /etc/novpn /run/novpn
-        chmod 644 /run/novpn
+        chmod 444 /run/novpn
     else
         echo "'novpn_ns' seem to be not up." >&2
         echo "    Use: 'sudo systemctl start novpn' to bring it up, or" >&2
