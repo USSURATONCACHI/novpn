@@ -1,7 +1,10 @@
 # Usage: /usr/bin/novpn [command] will route its traffic via this device and gateway.
-DEV	enp5s0
-GATEWAY	192.168.0.1
+# Use `novpn_ns configure_default` to set up initial configuration
+
+DEV	some invalid default device that needs to be reconofigured
+GATEWAY	same
 
 # Name of network namespace and its subnet mask.
+
 NS	novpn_ns
 SUBNET	192.168.80.0/30

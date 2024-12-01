@@ -1,3 +1,8 @@
+Version 1.3.1
+
+- Fixed typo in `novpn_ns params` with invalid command usage.
+- Made initial configuration invalid, so that bugs in initial configuration will be seen.
+
 Version 1.3.0
 
 - Decoupled AUR files from code into separate branch (`aur`).
