@@ -5,4 +5,4 @@ if [ -z "$1" ]; then
 fi
 
 source novpn_ns params
-firejail --noprofile --netns=${NS} "$@"
+switch-netns --by-name ${NS} -- "$@"

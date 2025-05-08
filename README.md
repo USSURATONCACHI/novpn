@@ -100,7 +100,7 @@ You can also manually start and stop it with `sudo novpn_ns up` and `sudo novpn_
 ## Dependencies
 
 - `bash`
-- `firejail`
+- `switch-netns`
 - `iproute2`
 - `iptables`
 - `grep`
