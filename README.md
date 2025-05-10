@@ -1,28 +1,32 @@
 # novpn
 
-**novpn** is a command-line tool designed to route traffic through a specific network device using Linux network namespaces. It provides a simple way to manage network isolation for applications and services.
+**novpn** is a command-line tool to route traffic through a specific network device (with network namespaces).
+
+It automatically sets up & keeps alive a network namespace (`novpn_ns` by default) via systemd units.
 
 ## Quick start
 
-This tool was initially created to launch Steam without wireguard vpn to reduce ping in games, while other programs will still run with VPN.
+`novpn` was initially created to launch Steam without wireguard tunneling to reduce ping in games, while other programs will still run with VPN tunneling.
 
 However `novpn` is not limited by steam, or wireguard. You can use it to launch any programs on any network devices.
 
 ```bash
-
 # Assuming you have VPN (like wireguard) enabled
+
 $ novpn curl api.ipify.org
 4.3.2.1  # <-- your true home IP
 $ curl api.ipify.org
-1.2.3.4  # <-- your vpn IP
-
+1.2.3.4  # <-- your VPN IP
 ```
 
-## Features
+## Known issues
 
-- Ease of use.
-- Control traffic routing via specified network device.
-- Automatic setup of network namespaces.
+- DNS leaking.
+    DNS server settings will "leak" into the network namespace. If you use local DNS stubs - domain resolution will not work.
+    I am currently working on a big project overhaul, which will fix this issue, alongside other big changes.
+
+- Multiple physical links.
+    When your machine is connected to the internet via multiple links (for example LAN + Wifi), `novpn` will only work through one of them (usually LAN).
 
 ## Installation
 
@@ -38,7 +42,7 @@ Download package from releases page
 
 ### Package it yourself
 
-clone the repository, build and install the package:
+clone the repository, build and install the package (Arch linux):
 
 ```bash
 git clone https://github.com/USSURATONCACHI/novpn
@@ -49,7 +53,7 @@ makepkg -si
 
 ## Usage
 
-To use the tool, invoke the `novpn` command followed by the desired command you want to run within the specified namespace:
+To use the tool, invoke the `novpn` command followed by the desired command:
 
 ```bash
 $ novpn <command>
@@ -61,12 +65,6 @@ Create default configuration for `novpn`:
 
 ```bash
 $ sudo novpn_ns configure_default
-```
-
-### Example
-
-```bash
-$ novpn curl api.ipify.org
 ```
 
 ## Configuration
